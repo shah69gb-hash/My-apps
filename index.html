@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MTK Studio Apps</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            color: #222;
+        }
+
+        header {
+            background: #2586ae;
+            color: white;
+            text-align: center;
+            padding: 25px 15px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        header p {
+            margin: 8px 0 0;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 25px auto;
+            padding: 0 15px;
+        }
+
+        .app {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .app-logo {
+            width: 85px;
+            height: 85px;
+            border-radius: 18px;
+            object-fit: cover;
+            background: #ddd;
+        }
+
+        .app-info {
+            flex: 1;
+        }
+
+        .app-info h2 {
+            margin: 0 0 7px;
+            font-size: 21px;
+        }
+
+        .app-info p {
+            margin: 4px 0;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .download {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 18px;
+            background: #2586ae;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .download:hover {
+            opacity: 0.9;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #777;
+            font-size: 14px;
+        }
+
+        @media (max-width: 500px) {
+            .app {
+                align-items: flex-start;
+            }
+
+            .app-logo {
+                width: 70px;
+                height: 70px;
+            }
+
+            .app-info h2 {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>MTK Studio</h1>
+    <p>Android Applications</p>
+</header>
+
+<div class="container">
+
+    <!-- App 1 -->
+    <div class="app">
+        <img class="app-logo"
+             src="https://via.placeholder.com/150"
+             alt="Kohistani Dictionary">
+
+        <div class="app-info">
+            <h2>Kohistani Dictionary</h2>
+            <p>Offline Kohistani → Urdu Dictionary</p>
+            <p>Version: 1.0.0</p>
+            <p>Size: 20 MB</p>
+
+            <a class="download"
+               href="YOUR-APK-LINK-HERE">
+                Download APK
+            </a>
+        </div>
+    </div>
+
+    <!-- App 2 -->
+    <div class="app">
+        <img class="app-logo"
+             src="https://via.placeholder.com/150"
+             alt="TX Player">
+
+        <div class="app-info">
+            <h2>TX Player</h2>
+            <p>Offline Music Player</p>
+            <p>Version: 1.0.0</p>
+            <p>Size: 15 MB</p>
+
+            <a class="download"
+               href="YOUR-APK-LINK-HERE">
+                Download APK
+            </a>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    © 2026 MTK Studio
+</footer>
+
+</body>
+</html>
