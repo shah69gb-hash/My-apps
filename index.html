@@ -3,111 +3,470 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MTK Studio Apps</title>
+
+    <meta name="description"
+          content="MTK Studio - Simple, useful and offline Android applications.">
+
+    <meta name="theme-color" content="#2586ae">
+
+    <title>MTK Studio | Android Applications</title>
 
     <style>
         * {
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
         }
 
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f4f6f8;
-            color: #222;
+        :root {
+            --primary: #2586ae;
+            --primary-dark: #176784;
+            --dark: #102a43;
+            --text: #243b53;
+            --muted: #627d98;
+            --light: #f4f8fb;
+            --white: #ffffff;
+            --border: #e5edf3;
         }
+
+        body {
+            font-family:
+                Inter,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Arial,
+                sans-serif;
+
+            background: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
 
         header {
-            background: #2586ae;
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 10% 20%, rgba(255,255,255,.15), transparent 30%),
+                linear-gradient(135deg, #2586ae, #176784);
+
             color: white;
+            padding: 55px 20px 75px;
             text-align: center;
-            padding: 25px 15px;
         }
 
-        header h1 {
-            margin: 0;
-            font-size: 28px;
+        header::before {
+            content: "";
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: rgba(255,255,255,.05);
+            border-radius: 50%;
+            top: -300px;
+            left: -180px;
         }
 
-        header p {
-            margin: 8px 0 0;
-            opacity: 0.9;
+        header::after {
+            content: "";
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            background: rgba(255,255,255,.04);
+            border-radius: 50%;
+            bottom: -300px;
+            right: -150px;
         }
 
-        .container {
-            max-width: 700px;
-            margin: 25px auto;
-            padding: 0 15px;
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: auto;
         }
 
-        .app {
-            background: white;
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        /* =========================
+           MTK LOGO
+        ========================= */
+
+        .brand {
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 18px;
+            margin-bottom: 20px;
         }
 
-        .app-logo {
-            width: 85px;
-            height: 85px;
-            border-radius: 18px;
+        .logo {
+            width: 92px;
+            height: 92px;
+            border-radius: 50%;
+            background: #0d2538;
+            border: 4px solid rgba(255,255,255,.8);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            box-shadow:
+                0 10px 35px rgba(0,0,0,.20);
+        }
+
+        .logo svg {
+            width: 72px;
+            height: 72px;
+        }
+
+        .brand-name {
+            text-align: left;
+        }
+
+        .brand-name h1 {
+            font-size: 38px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .brand-name span {
+            font-size: 14px;
+            letter-spacing: 4px;
+            opacity: .9;
+        }
+
+        header .tagline {
+            font-size: 18px;
+            opacity: .92;
+            margin-top: 12px;
+        }
+
+        header .description {
+            max-width: 620px;
+            margin: 10px auto 0;
+            font-size: 15px;
+            opacity: .82;
+        }
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        .container {
+            width: 92%;
+            max-width: 950px;
+            margin: -35px auto 60px;
+            position: relative;
+            z-index: 5;
+        }
+
+        /* =========================
+           APP CARD
+        ========================= */
+
+        .app-card {
+            background: rgba(255,255,255,.97);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+
+            padding: 28px;
+            margin-bottom: 24px;
+
+            display: flex;
+            gap: 28px;
+            align-items: center;
+
+            box-shadow:
+                0 15px 45px rgba(16,42,67,.08);
+
+            transition:
+                transform .25s ease,
+                box-shadow .25s ease;
+        }
+
+        .app-card:hover {
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 22px 55px rgba(16,42,67,.13);
+        }
+
+        .app-icon {
+            width: 125px;
+            height: 125px;
+            min-width: 125px;
+
+            border-radius: 26px;
             object-fit: cover;
-            background: #ddd;
+
+            box-shadow:
+                0 10px 25px rgba(0,0,0,.12);
         }
 
-        .app-info {
+        .app-content {
             flex: 1;
         }
 
-        .app-info h2 {
-            margin: 0 0 7px;
-            font-size: 21px;
+        .app-content h2 {
+            color: var(--dark);
+            font-size: 27px;
+            margin-bottom: 4px;
         }
 
-        .app-info p {
-            margin: 4px 0;
-            color: #666;
-            font-size: 14px;
+        .app-type {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 15px;
+            margin-bottom: 10px;
         }
+
+        .app-description {
+            color: var(--muted);
+            font-size: 15px;
+            margin-bottom: 16px;
+        }
+
+        /* =========================
+           FEATURES
+        ========================= */
+
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+            margin-bottom: 18px;
+        }
+
+        .feature {
+            background: #f1f7fa;
+            color: #365c70;
+
+            border: 1px solid #e0edf2;
+
+            padding: 6px 11px;
+            border-radius: 30px;
+
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* =========================
+           APP INFO
+        ========================= */
+
+        .app-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .app-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .meta-icon {
+            font-size: 16px;
+        }
+
+        /* =========================
+           DOWNLOAD BUTTON
+        ========================= */
 
         .download {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 10px 18px;
-            background: #2586ae;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+
+            background: linear-gradient(
+                135deg,
+                var(--primary),
+                var(--primary-dark)
+            );
+
             color: white;
             text-decoration: none;
-            border-radius: 8px;
-            font-weight: bold;
+
+            padding: 12px 21px;
+            border-radius: 11px;
+
+            font-size: 14px;
+            font-weight: 700;
+
+            white-space: nowrap;
+
+            box-shadow:
+                0 7px 18px rgba(37,134,174,.25);
+
+            transition:
+                transform .2s ease,
+                box-shadow .2s ease;
         }
 
         .download:hover {
-            opacity: 0.9;
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 10px 24px rgba(37,134,174,.35);
         }
+
+        .download svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
 
         footer {
+            background: #102a43;
+            color: white;
             text-align: center;
-            padding: 25px;
-            color: #777;
-            font-size: 14px;
+
+            padding: 38px 20px;
         }
 
-        @media (max-width: 500px) {
-            .app {
-                align-items: flex-start;
+        .footer-logo {
+            width: 55px;
+            height: 55px;
+
+            border-radius: 50%;
+            background: #0b2031;
+
+            border: 2px solid #4eb8df;
+
+            margin: 0 auto 12px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footer-logo svg {
+            width: 42px;
+            height: 42px;
+        }
+
+        footer h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        footer p {
+            color: #9fb3c8;
+            font-size: 13px;
+        }
+
+        .footer-line {
+            width: 100%;
+            max-width: 500px;
+            height: 1px;
+            background: rgba(255,255,255,.12);
+
+            margin: 22px auto;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            header {
+                padding: 40px 18px 65px;
             }
 
-            .app-logo {
+            .brand {
+                gap: 13px;
+            }
+
+            .logo {
                 width: 70px;
                 height: 70px;
             }
 
-            .app-info h2 {
-                font-size: 18px;
+            .logo svg {
+                width: 55px;
+                height: 55px;
+            }
+
+            .brand-name h1 {
+                font-size: 28px;
+            }
+
+            .brand-name span {
+                font-size: 10px;
+                letter-spacing: 3px;
+            }
+
+            header .tagline {
+                font-size: 16px;
+            }
+
+            .container {
+                width: 94%;
+            }
+
+            .app-card {
+                flex-direction: column;
+                align-items: flex-start;
+
+                padding: 22px;
+                gap: 18px;
+            }
+
+            .app-icon {
+                width: 95px;
+                height: 95px;
+                min-width: 95px;
+                border-radius: 21px;
+            }
+
+            .app-content h2 {
+                font-size: 23px;
+            }
+
+            .app-bottom {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .app-meta {
+                margin-bottom: 4px;
+            }
+
+            .download {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 380px) {
+
+            .brand-name h1 {
+                font-size: 24px;
+            }
+
+            .logo {
+                width: 62px;
+                height: 62px;
+            }
+
+            .app-card {
+                padding: 18px;
             }
         }
     </style>
@@ -115,56 +474,373 @@
 
 <body>
 
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
 <header>
-    <h1>MTK Studio</h1>
-    <p>Android Applications</p>
+
+    <div class="header-content">
+
+        <div class="brand">
+
+            <!-- MTK STUDIO LOGO -->
+            <div class="logo">
+
+                <svg viewBox="0 0 100 100"
+                     xmlns="http://www.w3.org/2000/svg">
+
+                    <!-- Mountains -->
+                    <path
+                        d="M12 55 L32 30 L43 43 L59 20 L88 55 Z"
+                        fill="none"
+                        stroke="white"
+                        stroke-width="6"
+                        stroke-linejoin="round"/>
+
+                    <path
+                        d="M23 55 L37 39 L45 48 L59 29 L78 55"
+                        fill="none"
+                        stroke="#56c8ef"
+                        stroke-width="4"
+                        stroke-linejoin="round"/>
+
+                    <!-- MTK -->
+                    <text
+                        x="50"
+                        y="72"
+                        text-anchor="middle"
+                        fill="white"
+                        font-size="19"
+                        font-weight="800"
+                        font-family="Arial">
+                        MTK
+                    </text>
+
+                    <text
+                        x="50"
+                        y="86"
+                        text-anchor="middle"
+                        fill="#56c8ef"
+                        font-size="9"
+                        font-weight="700"
+                        letter-spacing="2"
+                        font-family="Arial">
+                        STUDIO
+                    </text>
+
+                </svg>
+
+            </div>
+
+            <div class="brand-name">
+                <h1>MTK Studio</h1>
+                <span>ANDROID APPLICATIONS</span>
+            </div>
+
+        </div>
+
+        <div class="tagline">
+            Simple Apps • Useful Tools • For You
+        </div>
+
+        <p class="description">
+            Discover simple, useful and offline Android applications
+            developed by MTK Studio.
+        </p>
+
+    </div>
+
 </header>
 
-<div class="container">
 
-    <!-- App 1 -->
-    <div class="app">
-        <img class="app-logo"
-             src="Kohistani%20Dictionary%20Mountain%20Emblem.png"
-             alt="Kohistani Dictionary">
+<!-- =========================================
+     APPLICATIONS
+========================================= -->
 
-        <div class="app-info">
+<main class="container">
+
+
+    <!-- =====================================
+         KOHISTANI DICTIONARY
+    ====================================== -->
+
+    <section class="app-card">
+
+        <img
+            class="app-icon"
+            src="Kohistani%20Dictionary%20Mountain%20Emblem.png"
+            alt="Kohistani Dictionary Logo"
+        >
+
+        <div class="app-content">
+
             <h2>Kohistani Dictionary</h2>
-            <p>Offline Kohistani → Urdu Dictionary</p>
-            <p>Version: 1.0.0</p>
-            <p>Size: 20 MB</p>
 
-            <a class="download"
-               href="https://raw.githubusercontent.com/shah69gb-hash/My-apps/refs/heads/main/Kohistani%20Dictionary.apk">
-                Download APK
-            </a>
+            <div class="app-type">
+                Offline Kohistani → Urdu Dictionary
+            </div>
+
+            <p class="app-description">
+                A digital effort to preserve Kohistani words,
+                language, literature and linguistic heritage
+                for future generations.
+            </p>
+
+            <div class="features">
+
+                <span class="feature">
+                    100% Offline
+                </span>
+
+                <span class="feature">
+                    Rich Vocabulary
+                </span>
+
+                <span class="feature">
+                    Kohistani → Urdu
+                </span>
+
+                <span class="feature">
+                    Fast Search
+                </span>
+
+            </div>
+
+            <div class="app-bottom">
+
+                <div class="app-meta">
+
+                    <span class="meta-item">
+                        <span class="meta-icon">📱</span>
+                        Version 1.0.0
+                    </span>
+
+                    <span class="meta-item">
+                        <span class="meta-icon">💾</span>
+                        20 MB
+                    </span>
+
+                    <span class="meta-item">
+                        <span class="meta-icon">⚡</span>
+                        Offline
+                    </span>
+
+                </div>
+
+                <!-- GitHub Direct APK -->
+                <a
+                    class="download"
+                    href="https://raw.githubusercontent.com/shah69gb-hash/My-apps/refs/heads/main/Kohistani%20Dictionary.apk"
+                    download
+                >
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round">
+
+                        <path d="M12 3v12"></path>
+                        <path d="M7 10l5 5 5-5"></path>
+                        <path d="M5 21h14"></path>
+
+                    </svg>
+
+                    Download APK
+
+                </a>
+
+            </div>
+
         </div>
-    </div>
 
-    <!-- App 2 -->
-    <div class="app">
-        <img class="app-logo"
-             src="https://via.placeholder.com/150"
-             alt="TX Player">
+    </section>
 
-        <div class="app-info">
+
+
+    <!-- =====================================
+         TX PLAYER
+    ====================================== -->
+
+    <section class="app-card">
+
+        <!--
+            Replace this image with your actual TX Player logo.
+            Example:
+            TX Player.png
+        -->
+
+        <img
+            class="app-icon"
+            src="TX%20Player.png"
+            alt="TX Player Logo"
+        >
+
+        <div class="app-content">
+
             <h2>TX Player</h2>
-            <p>Offline Music Player</p>
-            <p>Version: 1.0.0</p>
-            <p>Size: 15 MB</p>
 
-            <a class="download"
-               href="YOUR-APK-LINK-HERE">
-                Download APK
-            </a>
+            <div class="app-type">
+                Offline Music Player
+            </div>
+
+            <p class="app-description">
+                A simple and modern offline music player
+                designed for smooth local music playback.
+            </p>
+
+            <div class="features">
+
+                <span class="feature">
+                    Local Music
+                </span>
+
+                <span class="feature">
+                    Playlist Support
+                </span>
+
+                <span class="feature">
+                    Light & Dark Mode
+                </span>
+
+                <span class="feature">
+                    Offline
+                </span>
+
+            </div>
+
+            <div class="app-bottom">
+
+                <div class="app-meta">
+
+                    <span class="meta-item">
+                        <span class="meta-icon">📱</span>
+                        Version 1.0.0
+                    </span>
+
+                    <span class="meta-item">
+                        <span class="meta-icon">💾</span>
+                        15 MB
+                    </span>
+
+                    <span class="meta-item">
+                        <span class="meta-icon">⚡</span>
+                        Offline
+                    </span>
+
+                </div>
+
+
+                <!--
+                    IMPORTANT:
+                    Replace the link below with the exact
+                    TX Player APK file link from your GitHub repository.
+                -->
+
+                <a
+                    class="download"
+                    href="https://raw.githubusercontent.com/shah69gb-hash/My-apps/refs/heads/main/Kohistani%20Dictionary.apk"
+                >
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round">
+
+                        <path d="M12 3v12"></path>
+                        <path d="M7 10l5 5 5-5"></path>
+                        <path d="M5 21h14"></path>
+
+                    </svg>
+
+                    Download APK
+
+                </a>
+
+            </div>
+
         </div>
-    </div>
 
-</div>
+    </section>
+
+</main>
+
+
+
+<!-- =========================================
+     FOOTER
+========================================= -->
 
 <footer>
-    © 2026 MTK Studio
+
+    <div class="footer-logo">
+
+        <svg
+            viewBox="0 0 100 100"
+            xmlns="http://www.w3.org/2000/svg">
+
+            <path
+                d="M12 55 L32 30 L43 43 L59 20 L88 55"
+                fill="none"
+                stroke="white"
+                stroke-width="6"
+                stroke-linejoin="round"/>
+
+            <path
+                d="M23 55 L37 39 L45 48 L59 29 L78 55"
+                fill="none"
+                stroke="#56c8ef"
+                stroke-width="4"
+                stroke-linejoin="round"/>
+
+            <text
+                x="50"
+                y="72"
+                text-anchor="middle"
+                fill="white"
+                font-size="19"
+                font-weight="800"
+                font-family="Arial">
+                MTK
+            </text>
+
+            <text
+                x="50"
+                y="86"
+                text-anchor="middle"
+                fill="#56c8ef"
+                font-size="9"
+                font-weight="700"
+                letter-spacing="2"
+                font-family="Arial">
+                STUDIO
+            </text>
+
+        </svg>
+
+    </div>
+
+    <h3>MTK Studio</h3>
+
+    <p>
+        Simple Apps • Useful Tools • For You
+    </p>
+
+    <div class="footer-line"></div>
+
+    <p>
+        © 2026 MTK Studio. All rights reserved.
+    </p>
+
 </footer>
+
 
 </body>
 </html>
